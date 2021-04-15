@@ -2,10 +2,62 @@ body {
   padding: 30px;
 }
 
+h2, h3 {
+  color: crimson;
+}
+
 .main-header {
-  background: purple;
+  background-color: crimson;
   color: #fff;
   margin: -30px -30px 30px -30px;
   padding: 20px 30px;
   width: calc(100% + 60px);
+  box-shadow: 0 20px 20px rgba(0,0,0,0.15);
+}
+
+.movie-search {
+  background: #fff;
+  border: 1px solid crimson;
+}
+
+input, select {
+  border-color: crimson !important;
+  color: crimson !important;
+}
+
+input::placeholder {
+  color: crimson !important;
+}
+
+.btn-primary {
+  background: crimson !important;
+  border-color: crimson !important;
+}
+
+
+
+
+
+
+
+.list-group-item:hover {
+  cursor: pointer;
+}
+.list-group-item button {
+  padding: 0;
+  display: block;
+  color: crimson;
+}
+
+
+
+.movie-list-entry-details {
+  margin-top: 10px;
+}
+
+.movie-list-entry-details img {
+  width: 150px;
+  height: auto;
+  float: left;
+  margin: 0 20px 20px 0;
 }

@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
 import './../node_modules/bootstrap/dist/css/bootstrap.css';
-import MovieSearch from "./MovieSearch/MovieSearch";
-import Watchlist from "./Watchlist/Watchlist";
+import MovieSearchContainer from "./components/MovieSearch/MovieSearchContainer";
 
 function App()
 {
@@ -12,11 +11,8 @@ function App()
                 <h1><strong>cherryCordial: </strong>Movie db</h1>
             </header>
             <div className="row">
-                <div className="col-6">
-                    <MovieSearch />
-                </div>
-                <div className="col-6">
-                    <Watchlist />
+                <div className="col-8">
+                    <MovieSearchContainer />
                 </div>
             </div>
         </div>
