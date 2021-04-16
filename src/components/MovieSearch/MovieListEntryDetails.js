@@ -1,8 +1,7 @@
 import React from 'react';
 
-const MovieListEntryDetails = ({detailsExpanded, movie}) =>
+const MovieListEntryDetails = ({detailsExpanded, movie, addMovieToWatchlist}) =>
 {
-    console.log(movie);
     let className = 'movie-list-entry-details';
 
     if(!detailsExpanded) className+= ' collapse';
@@ -11,7 +10,7 @@ const MovieListEntryDetails = ({detailsExpanded, movie}) =>
         <div id={'MovieListEntry'+movie.id} className={className}>
             <img src={'https://image.tmdb.org/t/p/original/'+movie.poster_path} />
             <p>{movie.overview}</p>
-            <button class="btn btn-link">+ Add to Watchlist</button>
+            <button className="btn btn-link" onClick={() => {addMovieToWatchlist(movie)}}>+ Add to Watchlist</button>
         </div>
     )
 }

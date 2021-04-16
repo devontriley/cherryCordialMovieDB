@@ -1,7 +1,7 @@
 import React from 'react';
-import MovieListEntry from "./MovieListEntry";
+import MovieListEntry from './MovieListEntry';
 
-const MovieList = ({movies, addMovieToWatchlist}) =>
+const MovieList = ({movies, removeMovieFromWatchlist}) =>
 {
     return (
         <div className="mt-3">
@@ -9,7 +9,7 @@ const MovieList = ({movies, addMovieToWatchlist}) =>
                 ?
                     <ul className="list-group">
                         {movies.map(movie =>
-                            <MovieListEntry key={movie.id} movie={movie} addMovieToWatchlist={addMovieToWatchlist} />
+                            <MovieListEntry key={movie.id} movie={movie} removeMovieFromWatchlist={removeMovieFromWatchlist} />
                         )}
                     </ul>
                 :

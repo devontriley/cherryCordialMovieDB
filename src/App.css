@@ -61,3 +61,15 @@ input::placeholder {
   float: left;
   margin: 0 20px 20px 0;
 }
+
+
+
+.watchlist {
+  border: 1px solid crimson;
+  background: #fff;
+}
+
+.remove-from-watchlist {
+  font-size: 12px !important;
+  color: #333 !important;
+}
