@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from "axios";
 import SearchTerm from "./SearchTerm";
 import GenreSelect from "./GenreSelect";
-
-const searchMovies = (searchTerm) =>
-{
-    return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=b3a999b7703140535e95baeff2e338fa&query=${searchTerm}&sort`)
-        .then(res => {
-            return res.data.results;
-        });
-}
+import fetchMovies from "../fetchMovies";
 
 const filterResultsByGenre = (movies, genre) =>
 {
@@ -39,7 +31,7 @@ const MovieSearchForm = ({setMovies}) =>
         const genreSelect = e.target[0];
         const textInput = e.target[1];
 
-        searchMovies(textInput.value)
+        fetchMovies(textInput.value)
             .then(movies =>
             {
                 let filteredMovies = movies;
