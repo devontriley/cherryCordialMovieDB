@@ -7,7 +7,7 @@ const MovieCast = ({cast}) =>
             <h5>Cast</h5>
             {cast.filter((c, index) => index < 10).map(c =>
                 <div key={c.id}>
-                    {c.character}
+                    <p>{c.character} <strong>{c.name}</strong></p>
                 </div>
             )}
         </div>
