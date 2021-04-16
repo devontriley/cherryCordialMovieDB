@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import MovieCast from "./MovieCast";
+import fetchCast from "../fetchCast";
 
 const MovieModal = ({movie, setModalMovie}) =>
 {
-    console.log(movie);
+    const [cast, setCast] = useState([]);
+
+    useEffect(() =>
+    {
+        fetchCast(movie.id)
+            .then(response =>{
+                setCast(response.data.cast);
+            });
+    }, []);
+
     return (
         <div className="movie-modal-container">
             <div className="movie-modal">
@@ -18,6 +29,7 @@ const MovieModal = ({movie, setModalMovie}) =>
                     <div className="col-7">
                         <p><strong>Release date:</strong> {movie.release_date}</p>
                         <p>{movie.overview}</p>
+                        <MovieCast cast={cast} />
                     </div>
                 </div>
             </div>
