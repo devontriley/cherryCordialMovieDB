@@ -3,7 +3,7 @@ import SearchTerm from "./SearchTerm";
 import GenreSelect from "./GenreSelect";
 import fetchMovies from "../fetchMovies";
 
-const filterResultsByGenre = (movies, genre) =>
+const filterMoviesByGenre = (movies, genre) =>
 {
     let genreInt = parseInt(genre);
 
@@ -38,7 +38,7 @@ const MovieSearchForm = ({setMovies}) =>
 
                 if(genreSelect.value !== 'all')
                 {
-                    filteredMovies = filterResultsByGenre(movies, genreSelect.value);
+                    filteredMovies = filterMoviesByGenre(movies, genreSelect.value);
                 }
 
                 setMovies(filteredMovies);
