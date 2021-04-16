@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MovieListEntryDetails from './MovieListEntryDetails';
 
 const MovieListEntry = ({movie, removeMovieFromWatchlist}) =>
 {
@@ -18,6 +19,7 @@ const MovieListEntry = ({movie, removeMovieFromWatchlist}) =>
                 <button className="d-inline btn btn-link mb-0" onClick={handleClick}>{movie.title + ' (' + date + ')'}</button>
                 <button className="remove-from-watchlist d-inline btn btn-link" onClick={() => removeMovieFromWatchlist(movie)}>Remove</button>
             </div>
+            <MovieListEntryDetails detailsExpanded={detailsExpanded} movie={movie} />
         </li>
     )
 }

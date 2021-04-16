@@ -10,6 +10,8 @@ function App()
 
     const handleAddToWatchlist = (movie) =>
     {
+        if(watchlistMovies.includes(movie)) return;
+
         updateWatchlistMovies( arr => [...arr, movie]);
     }
 

@@ -15,7 +15,10 @@ const MovieListEntry = ({movie, addMovieToWatchlist}) =>
 
     return (
         <li className="list-group-item" key={movie.id}>
-            <button className="btn btn-link mb-0" onClick={handleClick}>{movie.title + ' (' + date + ')'}</button>
+            <div className="d-flex justify-content-between">
+                <button className="btn btn-link mb-0" onClick={handleClick}>{movie.title + ' (' + date + ')'}</button>
+                <button className="add-to-watchlist btn btn-link" onClick={() => {addMovieToWatchlist(movie)}}>+ Watchlist</button>
+            </div>
             <MovieListEntryDetails detailsExpanded={detailsExpanded} movie={movie} addMovieToWatchlist={addMovieToWatchlist} />
         </li>
     )
