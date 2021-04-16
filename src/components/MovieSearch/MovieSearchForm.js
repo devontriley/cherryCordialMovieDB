@@ -2,18 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SearchTerm from "./SearchTerm";
 import GenreSelect from "./GenreSelect";
 import fetchMovies from "../fetchMovies";
-
-const filterMoviesByGenre = (movies, genre) =>
-{
-    let genreInt = parseInt(genre);
-
-    let filteredResults = movies.filter(function(movie)
-    {
-        return movie.genre_ids.indexOf(genreInt) > -1;
-    });
-
-    return filteredResults;
-}
+import filterMoviesByGenre from "../filterMoviesByGenre";
 
 const MovieSearchForm = ({setMovies}) =>
 {
