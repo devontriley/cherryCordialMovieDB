@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MovieListEntryDetails from "./MovieListEntryDetails";
 import fetchSimilarMovies from "../fetchSimilarMovies";
 
-const MovieListEntry = ({movie, addMovieToWatchlist}) =>
+const MovieListEntry = ({movie, addMovieToWatchlist, setModalMovie}) =>
 {
     const [similarMovies, setSimilarMovies] = useState([]);
     const [detailsExpanded, setDetailsExpanded] = useState(false);
@@ -29,7 +29,7 @@ const MovieListEntry = ({movie, addMovieToWatchlist}) =>
                 <button className="btn btn-link mb-0" onClick={handleClick}>{movie.title + ' (' + date + ')'}</button>
                 <button className="add-to-watchlist btn btn-link" onClick={() => {addMovieToWatchlist(movie)}}>+ Watchlist</button>
             </div>
-            <MovieListEntryDetails detailsExpanded={detailsExpanded} movie={movie} similarMovies={similarMovies} />
+            <MovieListEntryDetails detailsExpanded={detailsExpanded} movie={movie} similarMovies={similarMovies} setModalMovie={setModalMovie} />
         </li>
     )
 }

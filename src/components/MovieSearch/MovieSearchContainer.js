@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MovieSearchForm from "./MovieSearchForm";
 import MovieList from "./MovieList";
 
-const MovieSearchContainer = ({addMovieToWatchlist}) =>
+const MovieSearchContainer = ({addMovieToWatchlist, setModalMovie}) =>
 {
     const [movies, setMovies] = useState([]);
 
@@ -10,7 +10,7 @@ const MovieSearchContainer = ({addMovieToWatchlist}) =>
         <div className="movie-search p-4 rounded">
             <h2 className="mb-3">Movie Search</h2>
             <MovieSearchForm setMovies={setMovies} />
-            <MovieList movies={movies} addMovieToWatchlist={addMovieToWatchlist} />
+            <MovieList movies={movies} addMovieToWatchlist={addMovieToWatchlist} setModalMovie={setModalMovie} />
         </div>
     )
 }

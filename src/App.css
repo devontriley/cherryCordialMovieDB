@@ -93,3 +93,71 @@ input::placeholder {
   font-size: 12px !important;
   color: #333 !important;
 }
+
+
+.movie-modal-container {
+  position: fixed;
+  z-index: 998;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.7);
+}
+.movie-modal {
+  position: fixed;
+  z-index: 999;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 1200px;
+  max-height: 80vh;
+  overflow: auto;
+  padding: 5vw;
+  background: #fff;
+  border: 1px solid crimson;
+}
+
+.movie-modal-header {
+  position: relative;
+  margin:-5vw -5vw 3vw -5vw;
+  background: crimson;
+}
+
+.movie-modal-header .backdrop-image {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+  opacity: .5;
+  mix-blend-mode: overlay;
+}
+
+.movie-modal-header h1 {
+  position: absolute;
+  right: 5vw;
+  bottom: 2vw;
+  color: #fff;
+  margin: 0;
+  width: 50%;
+  font-weight: 900;
+  text-shadow: 3px 3px 7px rgb(0, 0, 0, 0.3);
+}
+
+.movie-modal-close {
+  position: absolute;
+  z-index: 1;
+  right: 20px;
+  top: 10px;
+  font-size: 30px;
+  font-weight: 900;
+  color: #fff;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.movie-modal-poster {
+  position: relative;
+  margin-top: -13vw;
+}
