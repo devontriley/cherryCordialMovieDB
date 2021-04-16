@@ -7,7 +7,7 @@ const MovieSearchContainer = ({addMovieToWatchlist}) =>
     const [movies, setMovies] = useState([]);
 
     return (
-        <div className="movie-search p-4">
+        <div className="movie-search p-4 rounded">
             <h2 className="mb-3">Movie Search</h2>
             <MovieSearchForm setMovies={setMovies} />
             <MovieList movies={movies} addMovieToWatchlist={addMovieToWatchlist} />
