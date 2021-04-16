@@ -14,17 +14,17 @@ const MovieListEntryDetails = ({detailsExpanded, movie, similarMovies}) =>
                     <p>{movie.overview}</p>
 
                     {similarMovies.length > 0 &&
-                            <div>
-                                <hr />
-                                <h5>Similar Movies</h5>
-                                <div className="similar-movies row">
-                                    {similarMovies.filter((m, index) => index < 6).map(m =>
-                                        <div key={m.id} className="col-auto">
-                                            <img src={'https://image.tmdb.org/t/p/original/'+m.poster_path} width="100px" />
-                                        </div>
-                                    )}
-                                </div>
+                        <div>
+                            <hr />
+                            <h5>Similar Movies</h5>
+                            <div className="similar-movies row">
+                                {similarMovies.filter((m, index) => index < 6).map(m =>
+                                    <div key={m.id} className="col-auto">
+                                        <img src={'https://image.tmdb.org/t/p/original/'+m.poster_path} width="100px" />
+                                    </div>
+                                )}
                             </div>
+                        </div>
                     }
                 </div>
             </div>
