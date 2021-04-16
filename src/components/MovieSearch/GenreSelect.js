@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import GenreEntry from "./GenreEntry";
-
-const getGenres = () => {
-    return axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=b3a999b7703140535e95baeff2e338fa&language=en-US`)
-        .then(res => {
-            return res.data.genres;
-        });
-}
+import fetchGenres from "../fetchGenres";
 
 const GenreSelect = () =>
 {
@@ -15,9 +8,9 @@ const GenreSelect = () =>
 
     useEffect(() =>
     {
-        getGenres()
+        fetchGenres()
             .then(data => {
-                setGenres(data);
+                setGenres(data.data.genres);
             });
     }, []);
 

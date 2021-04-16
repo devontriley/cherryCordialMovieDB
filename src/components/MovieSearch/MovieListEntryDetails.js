@@ -11,7 +11,7 @@ const MovieListEntryDetails = ({detailsExpanded, movie}) =>
         <div id={'MovieListEntry'+movie.id} className={className}>
             <img src={'https://image.tmdb.org/t/p/original/'+movie.poster_path} />
             <p>{movie.overview}</p>
-            <button class="btn btn-link">+ Add to Watchlist</button>
+            <button className="btn btn-link">+ Add to Watchlist</button>
         </div>
     )
 }
