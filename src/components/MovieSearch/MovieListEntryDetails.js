@@ -16,7 +16,7 @@ const MovieListEntryDetails = ({detailsExpanded, movie, similarMovies}) =>
                     <h5>Similar Movies</h5>
                     <div className="similar-movies row">
                         {similarMovies.filter((m, index) => index < 6).map(m =>
-                            <div key={m.id} className="col-3">
+                            <div key={m.id} className="col-auto">
                                 <img src={'https://image.tmdb.org/t/p/original/'+m.poster_path} width="100px" />
                             </div>
                         )}

@@ -76,6 +76,7 @@ input::placeholder {
 .similar-movies img {
   width: 100%;
   height: auto;
+  max-width: 80px;
 }
 
 
