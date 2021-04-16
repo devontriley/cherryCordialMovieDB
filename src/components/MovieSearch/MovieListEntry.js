@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MovieListEntryDetails from "./MovieListEntryDetails";
-import axios from "axios";
-
-const getSimilarMovies = (movie) =>
-{
-    return axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=b3a999b7703140535e95baeff2e338fa`)
-        .then(res => {
-            return res.data.results;
-        });
-}
+import fetchSimilarMovies from "../fetchSimilarMovies";
 
 const MovieListEntry = ({movie, addMovieToWatchlist}) =>
 {
@@ -25,8 +17,7 @@ const MovieListEntry = ({movie, addMovieToWatchlist}) =>
 
     useEffect(() =>
     {
-        console.log('test');
-        getSimilarMovies(movie)
+        fetchSimilarMovies(movie)
             .then(movies => {
                 setSimilarMovies(movies);
             });
