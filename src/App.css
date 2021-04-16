@@ -58,10 +58,25 @@ input::placeholder {
 .movie-list-entry-details img {
   width: 150px;
   height: auto;
-  float: left;
-  margin: 0 20px 20px 0;
+  align-self: flex-start;
 }
 
+
+.similar-movies.row {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.similar-movies > div[class*=col] {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 10px;
+}
+
+.similar-movies img {
+  width: 100%;
+  height: auto;
+}
 
 
 .watchlist {
