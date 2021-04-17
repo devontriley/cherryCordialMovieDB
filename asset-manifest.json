@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/cherryCordialMovieDB/static/css/main.0654a484.chunk.css",
-    "main.js": "/cherryCordialMovieDB/static/js/main.78503b76.chunk.js",
-    "main.js.map": "/cherryCordialMovieDB/static/js/main.78503b76.chunk.js.map",
+    "main.css": "/cherryCordialMovieDB/static/css/main.b4afef5a.chunk.css",
+    "main.js": "/cherryCordialMovieDB/static/js/main.8d97de44.chunk.js",
+    "main.js.map": "/cherryCordialMovieDB/static/js/main.8d97de44.chunk.js.map",
     "runtime-main.js": "/cherryCordialMovieDB/static/js/runtime-main.dbd09f96.js",
     "runtime-main.js.map": "/cherryCordialMovieDB/static/js/runtime-main.dbd09f96.js.map",
     "static/css/2.ef9168ec.chunk.css": "/cherryCordialMovieDB/static/css/2.ef9168ec.chunk.css",
@@ -12,14 +12,14 @@
     "static/js/3.134753a5.chunk.js.map": "/cherryCordialMovieDB/static/js/3.134753a5.chunk.js.map",
     "index.html": "/cherryCordialMovieDB/index.html",
     "static/css/2.ef9168ec.chunk.css.map": "/cherryCordialMovieDB/static/css/2.ef9168ec.chunk.css.map",
-    "static/css/main.0654a484.chunk.css.map": "/cherryCordialMovieDB/static/css/main.0654a484.chunk.css.map",
+    "static/css/main.b4afef5a.chunk.css.map": "/cherryCordialMovieDB/static/css/main.b4afef5a.chunk.css.map",
     "static/js/2.dccb33fc.chunk.js.LICENSE.txt": "/cherryCordialMovieDB/static/js/2.dccb33fc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.dbd09f96.js",
     "static/css/2.ef9168ec.chunk.css",
     "static/js/2.dccb33fc.chunk.js",
-    "static/css/main.0654a484.chunk.css",
-    "static/js/main.78503b76.chunk.js"
+    "static/css/main.b4afef5a.chunk.css",
+    "static/js/main.8d97de44.chunk.js"
   ]
 }
