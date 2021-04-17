@@ -39,6 +39,11 @@ input::placeholder {
 }
 
 
+.movie-search-list {
+  max-height: 50vh;
+  overflow: auto;
+}
+
 .list-group-item:hover {
   cursor: pointer;
 }

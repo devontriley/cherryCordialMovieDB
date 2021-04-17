@@ -4,7 +4,7 @@ import MovieListEntry from "./MovieListEntry";
 const MovieList = ({movies, addMovieToWatchlist, setModalMovie}) =>
 {
     return (
-        <div className="mt-3">
+        <div className="movie-search-list mt-3">
             {movies.length
                 ?
                     <ul className="list-group">
