@@ -122,12 +122,15 @@ function App()
 
             <nav>
                 <a href="#" onClick={(e) => handleLinkClick(e, '')}>Home</a>
-                <a href="#" onClick={(e) => handleLinkClick(e, 'login')}>Login</a>
-                <a href="#" onClick={(e) => handleLinkClick(e, 'register')}>Register</a>
+                {!authState.isAuthenticated && <span>
+                    <a href="#" onClick={(e) => handleLinkClick(e, 'login')}>Login</a>
+                    <a href="#" onClick={(e) => handleLinkClick(e, 'register')}>Register</a>
+                </span>}
             </nav>
 
             {currentLayout == '' && <Home addMovieToWatchlist={handleAddToWatchlist} setModalMovie={setModalMovie} modalMovie={modalMovie} />}
-            {currentLayout == 'login' && <Login loginUser={loginUser} setAuthState={setAuthState} errors={errors} setErrors={setErrors} setCurrentLayout={setCurrentLayout} />}
+            {currentLayout == 'login' && !authState.isAuthenticated && <Login loginUser={loginUser} setAuthState={setAuthState} errors={errors} setErrors={setErrors} setCurrentLayout={setCurrentLayout} />}
+            {currentLayout == 'login' && authState.isAuthenticated && <Home addMovieToWatchlist={handleAddToWatchlist} setModalMovie={setModalMovie} modalMovie={modalMovie} />}
             {currentLayout == 'register' && <Register registerUser={registerUser} authState={authState} setAuthState={setAuthState} errors={errors} setErrors={setErrors} setCurrentLayout={setCurrentLayout} />}
             {currentLayout == null && <NotFoundPage/>}
         </div>
