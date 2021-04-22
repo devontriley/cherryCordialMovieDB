@@ -13,6 +13,8 @@ const Login = ({loginUser, setAuthState, errors, setErrors, setCurrentLayout}) =
     {
         loginUser(userData, setAuthState, setErrors, setCurrentLayout);
 
+        console.log(e, userData);
+
         e.preventDefault();
     }
 

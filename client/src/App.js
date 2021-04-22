@@ -11,6 +11,7 @@ import jwtDecode from 'jwt-decode';
 import { registerUser, setCurrentUser, logoutUser, loginUser } from './actions/authActions';
 import NotFoundPage from "./layouts/NotFoundPage";
 import Home from "./layouts/Home";
+const isEmpty = require('is-empty');
 
 function App()
 {
@@ -32,7 +33,10 @@ function App()
     // Log errors
     useEffect(() =>
     {
-        console.log(errors);
+        if(!isEmpty(errors))
+        {
+            console.log(errors);
+        }
     }, [errors]);
 
     // Check local storage for jwtToken and sets currentUser
