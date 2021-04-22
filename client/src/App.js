@@ -109,8 +109,13 @@ function App()
                         <h1><strong>cherryCordial: </strong>Movie db</h1>
                     </div>
                     <div className="col-auto">
-                        {authState.isAuthenticated && <button className="logout-button btn btn-link" onClick={handleLogout}>Logout</button>}
-                        {!authState.isAuthenticated && <button className="login-button btn btn-link" onClick={(e) => handleLinkClick(e, 'login')}>Login</button>}
+                        {authState.isAuthenticated && <div>
+                            Hello, {authState.user.name}
+                            <button className="logout-button btn btn-link" onClick={handleLogout}>Logout</button>
+                        </div>}
+                        {!authState.isAuthenticated && <div>
+                            <button className="login-button btn btn-link" onClick={(e) => handleLinkClick(e, 'login')}>Login</button>
+                        </div>}
                     </div>
                 </div>
             </header>

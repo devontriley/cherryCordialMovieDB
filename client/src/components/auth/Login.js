@@ -31,7 +31,7 @@ const Login = ({loginUser, setAuthState, errors, setErrors, setCurrentLayout}) =
             <div className="row">
                 <div className="col-lg-6 offset-lg-3">
                     <h2>Login</h2>
-                    <p>Don't have an account? <a href="/register">Register</a></p>
+                    <p>Don't have an account? <a href="#" onClick={() => setCurrentLayout('register')}>Register</a></p>
 
                     <form noValidate onSubmit={handleSubmit}>
                         <TextInput name="email" label="Email" value={userData.email} onChange={handleChange} error={errors.email} />
