@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TextInput from "./TextInput";
 
-const Register = ({registerUser, authState, setAuthState, errors, setErrors}) =>
+const Register = ({registerUser, authState, setAuthState, errors, setErrors, setCurrentLayout}) =>
 {
     const [userData, setUserData] = useState({
         name: '',
@@ -47,7 +47,7 @@ const Register = ({registerUser, authState, setAuthState, errors, setErrors}) =>
             <div className="row">
                 <div className="col-lg-6 offset-lg-3">
                     <h2>Register</h2>
-                    <p>Already have an account? <a href="/login">Login</a></p>
+                    <p>Already have an account? <a href="#" onClick={() => setCurrentLayout('login')}>Login</a></p>
                     <form noValidate id="create-account" className="create-account-form" onSubmit={handleSubmit}>
                         <TextInput name="name" label="Name" value={userData.name} onChange={handleChange} error={errors.name} />
                         <TextInput name="email" label="Email" value={userData.email} onChange={handleChange} error={errors.email} />

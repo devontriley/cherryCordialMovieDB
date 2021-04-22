@@ -128,7 +128,7 @@ function App()
 
             {currentLayout == '' && <Home addMovieToWatchlist={handleAddToWatchlist} setModalMovie={setModalMovie} modalMovie={modalMovie} />}
             {currentLayout == 'login' && <Login loginUser={loginUser} setAuthState={setAuthState} errors={errors} setErrors={setErrors} setCurrentLayout={setCurrentLayout} />}
-            {currentLayout == 'register' && <Register registerUser={registerUser} authState={authState} setAuthState={setAuthState} errors={errors} setErrors={setErrors}/>}
+            {currentLayout == 'register' && <Register registerUser={registerUser} authState={authState} setAuthState={setAuthState} errors={errors} setErrors={setErrors} setCurrentLayout={setCurrentLayout} />}
             {currentLayout == null && <NotFoundPage/>}
         </div>
     );
