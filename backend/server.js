@@ -8,15 +8,6 @@ const users = require('./routes/users');
 
 const app = express();
 
-if(process.env.NODE_ENV === 'production')
-{
-    app.use(express.static(path.join(__dirname, '/client/build')))
-    app.get('*', (req,res) =>
-    {
-        res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
-    })
-}
-
 app.use(cors());
 
 // Bodyparser middleware
@@ -46,6 +37,11 @@ require('./config/passport')(passport);
 app.use('/users/', users);
 
 const port = process.env.PORT || 5000;
+
+if(process.env.NODE_ENV === 'production')
+{
+    app.use(express.static(path.join(__dirname, '/client/build')))
+}
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
