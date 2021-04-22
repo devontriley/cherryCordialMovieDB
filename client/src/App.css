@@ -10,20 +10,6 @@ h2, h3 {
   color: crimson;
 }
 
-.main-header {
-  background-color: crimson;
-  color: #fff;
-  margin: -30px -30px 30px -30px;
-  padding: 20px 30px;
-  width: calc(100% + 60px);
-  box-shadow: 0 20px 20px rgba(0,0,0,0.15);
-}
-
-.movie-search {
-  background: #fff;
-  border: 1px solid crimson;
-}
-
 input, select {
   border-color: crimson !important;
   color: crimson !important;
@@ -39,6 +25,31 @@ input::placeholder {
 }
 
 
+.main-header {
+  background-color: crimson;
+  color: #fff;
+  margin: -30px -30px 30px -30px;
+  padding: 20px 30px;
+  width: calc(100% + 60px);
+  box-shadow: 0 20px 20px rgba(0,0,0,0.15);
+}
+
+.logout-button,
+.login-button {
+  padding: 0;
+  color: #fff !important;
+}
+
+
+.create-account-form {
+  max-width: 500px;
+}
+
+
+.movie-search {
+  background: #fff;
+  border: 1px solid crimson;
+}
 .movie-search-list {
   max-height: 50vh;
   overflow: auto;
