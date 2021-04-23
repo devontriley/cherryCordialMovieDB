@@ -6,7 +6,7 @@ const isEmpty = require("is-empty");
 // Register User
 export const registerUser = (userData, setErrors) =>
 {
-    axios.post('http://localhost:5000/users/register', userData)
+    axios.post('api/users/register', userData)
         .then(res => {
             console.log('User registered: ' + res);
         })
@@ -22,7 +22,7 @@ export const registerUser = (userData, setErrors) =>
 // Login - get user token
 export const loginUser = (userData, setAuthState, setErrors, setCurrentLayout) =>
 {
-    axios.post('users/login', userData)
+    axios.post('api/users/login', userData)
         .then(res =>
         {
             // Save to local storage

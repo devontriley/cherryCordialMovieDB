@@ -2,14 +2,15 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const keys = require('../config/keys');
+const keys = require('../../config/keys');
 
-const validateRegisterInput = require('./../validation/register');
-const validateLoginInput = require('./../validation/login');
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
-let User = require('../models/user.model');
+// Model for MongoDB user
+let User = require('../../models/User');
 
-// @route POST /users/register
+// @route POST /api/users/register
 // @desc Register user
 // @access Public
 
@@ -57,7 +58,7 @@ router.post('/register', (req, res) =>
         });
 });
 
-// @route POST /users/login
+// @route POST /api/users/login
 // @desc Login user and return JWT token
 // @access Public
 
