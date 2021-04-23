@@ -4,11 +4,12 @@ import jwtDecode from 'jwt-decode';
 const isEmpty = require("is-empty");
 
 // Register User
-export const registerUser = (userData, setErrors) =>
+export const registerUser = (userData, setErrors, setCurrentLayout) =>
 {
     axios.post('api/users/register', userData)
         .then(res => {
             console.log('User registered: ' + res);
+            setCurrentLayout('login');
         })
         .catch(err => {
             console.log('error registering user');

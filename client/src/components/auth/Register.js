@@ -20,7 +20,7 @@ const Register = ({registerUser, authState, setAuthState, errors, setErrors, set
             password2: userData.password2
         }
 
-        registerUser(newUser, setErrors);
+        registerUser(newUser, setErrors, setCurrentLayout);
 
         e.preventDefault();
     }
