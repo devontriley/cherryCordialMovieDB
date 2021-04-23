@@ -8,6 +8,7 @@ import jwtDecode from 'jwt-decode';
 import { registerUser, setCurrentUser, logoutUser, loginUser } from './actions/authActions';
 import NotFoundPage from "./layouts/NotFoundPage";
 import Home from "./layouts/Home";
+import fetchGenres from "./components/fetchGenres";
 const isEmpty = require('is-empty');
 
 function App()
