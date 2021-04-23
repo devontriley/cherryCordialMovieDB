@@ -1,9 +1,6 @@
 import React from 'react';
 import MovieList from './MovieList';
 
-// Remove movie from watchlist
-// Select to sort by genre
-
 const Watchlist = ({movies, removeMovieFromWatchlist}) =>
 {
     return (

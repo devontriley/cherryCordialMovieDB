@@ -85,11 +85,6 @@ function App()
         logoutUser(setAuthState, setCurrentLayout);
     }
 
-    const handleLogin = () =>
-    {
-
-    }
-
     const handleLinkClick = (e, layout) =>
     {
         setCurrentLayout(layout);
@@ -125,40 +120,48 @@ function App()
                 </span>}
             </nav>
 
-            {currentLayout == '' && <Home addMovieToWatchlist={handleAddToWatchlist} setModalMovie={setModalMovie} modalMovie={modalMovie} />}
-            {currentLayout == 'login' && !authState.isAuthenticated && <Login loginUser={loginUser} setAuthState={setAuthState} errors={errors} setErrors={setErrors} setCurrentLayout={setCurrentLayout} />}
-            {currentLayout == 'login' && authState.isAuthenticated && <Home addMovieToWatchlist={handleAddToWatchlist} setModalMovie={setModalMovie} modalMovie={modalMovie} />}
-            {currentLayout == 'register' && <Register registerUser={registerUser} authState={authState} setAuthState={setAuthState} errors={errors} setErrors={setErrors} setCurrentLayout={setCurrentLayout} />}
+            {currentLayout == '' &&
+                <Home
+                    addMovieToWatchlist={handleAddToWatchlist}
+                    setModalMovie={setModalMovie}
+                    modalMovie={modalMovie}
+                    movies={watchlistMovies}
+                    authState={authState}
+                    removeMovieFromWatchlist={handleRemoveFromWatchlist} />
+            }
+
+            {currentLayout == 'login' && authState.isAuthenticated &&
+                <Home
+                    addMovieToWatchlist={handleAddToWatchlist}
+                    setModalMovie={setModalMovie}
+                    modalMovie={modalMovie}
+                    movies={watchlistMovies}
+                    authState={authState}
+                    removeMovieFromWatchlist={handleRemoveFromWatchlist} />
+            }
+
+            {currentLayout == 'login' && !authState.isAuthenticated &&
+                <Login
+                    loginUser={loginUser}
+                    setAuthState={setAuthState}
+                    errors={errors}
+                    setErrors={setErrors}
+                    setCurrentLayout={setCurrentLayout} />
+            }
+
+            {currentLayout == 'register' &&
+                <Register
+                    registerUser={registerUser}
+                    authState={authState}
+                    setAuthState={setAuthState}
+                    errors={errors}
+                    setErrors={setErrors}
+                    setCurrentLayout={setCurrentLayout} />
+            }
+
             {currentLayout == null && <NotFoundPage/>}
         </div>
     );
-
-    // return (
-    //     <div className="App">
-    //
-    //         { modalMovie && <MovieModal movie={modalMovie} setModalMovie={setModalMovie} /> }
-    //
-    //         <header className="main-header">
-    //             <h1><strong>cherryCordial: </strong>Movie db</h1>
-    //             <button onClick={() => logoutUser(setAuthState)}>Logout</button>
-    //         </header>
-    //
-    //         <p>{authState.user.name}</p>
-    //
-    //         <Login loginUser={loginUser} setAuthState={setAuthState} errors={errors} setErrors={setErrors} />
-    //
-    //         {/*<Register registerUser={registerUser} authState={authState} setAuthState={setAuthState} errors={errors} setErrors={setErrors}/>*/}
-    //
-    //         <div className="row">
-    //             <div className="col-7">
-    //                 <MovieSearchContainer addMovieToWatchlist={handleAddToWatchlist} setModalMovie={setModalMovie} />
-    //             </div>
-    //             <div className="col-5">
-    //                 <Watchlist movies={watchlistMovies} removeMovieFromWatchlist={handleRemoveFromWatchlist} />
-    //             </div>
-    //         </div>
-    //     </div>
-    // );
 }
 
 export default App;
