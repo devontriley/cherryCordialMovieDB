@@ -14,6 +14,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    watchlist: {
+        type: Array,
+        required: false
+    },
     date: {
         type: Date,
         default: Date.now
