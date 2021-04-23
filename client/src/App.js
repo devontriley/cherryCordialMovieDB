@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import './node_modules/bootstrap/dist/css/bootstrap.css';
-import MovieSearchContainer from "./components/MovieSearch/MovieSearchContainer";
-import Watchlist from "./components/Watchlist/WatchlistContainer";
-import MovieModal from "./components/MovieModal/MovieModalContainer";
+import './../node_modules/bootstrap/dist/css/bootstrap.css';
 import Login from './components/auth/Login';
 import Register from "./components/auth/Register";
 import setAuthToken from "./utils/setAuthToken";
