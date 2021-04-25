@@ -96,6 +96,7 @@ router.post('/login', (req, res) =>
                 // Sign token
                 jwt.sign(payload, keys.secretOrKey, {expiresIn: 31556926}, (err, token) => {
                     res.json({
+                        user: user,
                         success: true,
                         token: 'Bearer ' + token
                     });
@@ -107,6 +108,32 @@ router.post('/login', (req, res) =>
             }
         });
     });
+});
+
+router.post('/user', (req, res) =>
+{
+    const userID = req.body.userID;
+
+    User.findById(userID)
+        .then(user =>
+        {
+            res.json(user);
+        })
+        .catch(err => console.log(err));
+});
+
+// @route POST /api/users/user/watchlist
+router.post('/user/watchlist', (req, res) =>
+{
+    const movie = req.body.movie;
+    const email = req.body.userEmail;
+
+    User.findOneAndUpdate({email: email}, { $push: {watchlist: movie} }, {new: true})
+        .then(users =>
+        {
+            res.json(users);
+        })
+        .catch(err => res.status(400).json({watchlistNotUpdated: 'Watchlist could not be updated'}))
 });
 
 module.exports = router;

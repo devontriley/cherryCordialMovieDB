@@ -5,28 +5,30 @@ import Login from './components/auth/Login';
 import Register from "./components/auth/Register";
 import setAuthToken from "./utils/setAuthToken";
 import jwtDecode from 'jwt-decode';
-import { registerUser, setCurrentUser, logoutUser, loginUser } from './actions/authActions';
+import { registerUser, updateAuthState, logoutUser, loginUser, getUserByID, addMovieToWatchlist } from './actions/authActions';
 import NotFoundPage from "./layouts/NotFoundPage";
 import Home from "./layouts/Home";
-import fetchGenres from "./components/fetchGenres";
 const isEmpty = require('is-empty');
 
 function App()
 {
-    // Routing
+    // Layout display (pages)
     const [currentLayout, setCurrentLayout] = useState('');
-
     // Auth
-    const [errors, setErrors] = useState({});
     const [authState, setAuthState] = useState({
         isAuthenticated: false,
-        user: {},
-        loading: false
+        jwt: {}
     });
-
+    // Users
+    const [currentUser, setCurrentUser] = useState({
+        email: '',
+        name: '',
+        watchlist: []
+    });
     // Movies
-    const [watchlistMovies, updateWatchlistMovies] = useState([]);
     const [modalMovie, setModalMovie] = useState(null);
+    // Errors
+    const [errors, setErrors] = useState({});
 
     // Log errors
     useEffect(() =>
@@ -45,41 +47,56 @@ function App()
         {
             // Set auth token header auth
             const token = localStorage.jwtToken;
+
             setAuthToken(token);
 
             // Decode token and get user info and exp
-            const decoded = jwtDecode(token);
+            const jwt = jwtDecode(token);
 
-            // Set current user and auth state
-            setCurrentUser(decoded, setAuthState);
+            updateAuthState(jwt, setAuthState);
+
+            getUserByID(jwt.id, setCurrentUser, setErrors);
 
             // Check for expired token
             const currentTime = Date.now() / 1000; // to get in milliseconds
 
-            if (decoded.exp < currentTime)
+            if (jwt.exp < currentTime)
             {
                 // Logout user
                 logoutUser(setAuthState);
 
                 // Redirect to login
-                console.log('log you out cuz the token expired');
-
-                //window.location.href = "./login";
+                setCurrentLayout('login');
             }
         }
     }, []);
 
-    const handleAddToWatchlist = (movie) =>
+    const removeMovieFromWatchlist = (movie) =>
     {
-        if(watchlistMovies.includes(movie)) return;
+        const watchlist = currentUser.watchlist;
 
-        updateWatchlistMovies( arr => [...arr, movie]);
+        if(watchlist.length > 0)
+        {
+            for (let i = 0; i < watchlist.length; i++)
+            {
+                let obj = watchlist[i];
+
+                // remove movie from watchlist if id matches
+                if (movie.id === obj.id)
+                {
+                    watchlist.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        console.log(watchlist);
     }
 
-    const handleRemoveFromWatchlist = (movieToRemove) =>
+    useEffect(() =>
     {
-        updateWatchlistMovies(watchlistMovies.filter(movie => movie.id !== movieToRemove.id));
-    }
+        console.log(currentUser);
+    }, [currentUser])
 
     const handleLogout = () =>
     {
@@ -93,6 +110,11 @@ function App()
         e.preventDefault();
     }
 
+    const handleAddMovieToWatchlist = (movie) =>
+    {
+        addMovieToWatchlist(movie, currentUser.email, setCurrentUser, setErrors);
+    }
+
     return (
         <div>
 
@@ -103,7 +125,7 @@ function App()
                     </div>
                     <div className="col-auto">
                         {authState.isAuthenticated && <div>
-                            Hello, {authState.user.name}
+                            Hello, {currentUser.name}
                             <button className="logout-button btn btn-link" onClick={handleLogout}>Logout</button>
                         </div>}
                         {!authState.isAuthenticated && <div>
@@ -123,22 +145,24 @@ function App()
 
             {currentLayout == '' &&
                 <Home
-                    addMovieToWatchlist={handleAddToWatchlist}
                     setModalMovie={setModalMovie}
                     modalMovie={modalMovie}
-                    movies={watchlistMovies}
                     authState={authState}
-                    removeMovieFromWatchlist={handleRemoveFromWatchlist} />
+                    currentUser={currentUser}
+                    addMovieToWatchlist={handleAddMovieToWatchlist}
+                    removeMovieFromWatchlist={removeMovieFromWatchlist}
+                    setErrors={setErrors} />
             }
 
             {currentLayout == 'login' && authState.isAuthenticated &&
                 <Home
-                    addMovieToWatchlist={handleAddToWatchlist}
                     setModalMovie={setModalMovie}
                     modalMovie={modalMovie}
-                    movies={watchlistMovies}
                     authState={authState}
-                    removeMovieFromWatchlist={handleRemoveFromWatchlist} />
+                    currentUser={currentUser}
+                    addMovieToWatchlist={handleAddMovieToWatchlist}
+                    removeMovieFromWatchlist={removeMovieFromWatchlist}
+                    setErrors={setErrors} />
             }
 
             {currentLayout == 'login' && !authState.isAuthenticated &&

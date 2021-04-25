@@ -21,7 +21,7 @@ export const registerUser = (userData, setErrors, setCurrentLayout) =>
 }
 
 // Login - get user token
-export const loginUser = (userData, setAuthState, setErrors, setCurrentLayout) =>
+export const loginUser = (userData, setAuthState, setErrors) =>
 {
     axios.post('api/users/login', userData)
         .then(res =>
@@ -34,32 +34,30 @@ export const loginUser = (userData, setAuthState, setErrors, setCurrentLayout) =
             setAuthToken(token);
 
             // Decode token to get user data
-            const decoded = jwtDecode(token);
+            const jwt = jwtDecode(token);
 
             // Set current user and auth state
-            setCurrentUser(decoded, setAuthState, setCurrentLayout);
+            updateAuthState(jwt, setAuthState);
 
+            // Clear errors
             setErrors({});
         })
         .catch(err =>
         {
-            // update error state
+            // Update errors
             setErrors(err.response.data);
         });
 }
 
 // Set logged in user
-export const setCurrentUser = (decoded, setAuthState, setCurrentLayout) =>
+export const updateAuthState = (jwt, setAuthState) =>
 {
     // Set current user
     setAuthState(prevState => ({
         ...prevState,
-        isAuthenticated: !isEmpty(decoded),
-        user: decoded
+        isAuthenticated: !isEmpty(jwt),
+        jwt: jwt
     }));
-
-    // Redirect to profile
-    //setCurrentLayout('profile');
 }
 
 // Log user out
@@ -68,9 +66,31 @@ export const logoutUser = (setAuthState, setCurrentLayout) =>
     // Remove token from local storage
     localStorage.removeItem('jwtToken');
 
-    // Remove auth header for future requestss
+    // Remove auth header for future requests
     setAuthToken(false);
 
     // Set current user to empty {} which will set isAuthenticated to false
-    setCurrentUser({}, setAuthState, setCurrentLayout);
+    updateAuthState({}, setAuthState, setCurrentLayout);
+}
+
+export const getUserByID = (userID, setCurrentUser, setErrors) =>
+{
+    axios.post('api/users/user', {userID: userID})
+        .then(res =>
+        {
+            const user = res.data;
+            setCurrentUser(user);
+        })
+        .catch(err => setErrors(err.response.data));
+}
+
+export const addMovieToWatchlist = (movie, userEmail, setCurrentUser, setErrors) =>
+{
+    axios.post('api/users/user/watchlist', {movie: movie, userEmail: userEmail})
+        .then(res => {
+            const user = res.data;
+            console.log(user);
+            setCurrentUser(user);
+        })
+        .catch(err => setErrors(err.response.data));
 }

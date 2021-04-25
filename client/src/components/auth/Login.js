@@ -11,7 +11,7 @@ const Login = ({loginUser, setAuthState, errors, setErrors, setCurrentLayout}) =
 
     const handleSubmit = (e) =>
     {
-        loginUser(userData, setAuthState, setErrors, setCurrentLayout);
+        loginUser(userData, setAuthState, setErrors);
 
         console.log(e, userData);
 

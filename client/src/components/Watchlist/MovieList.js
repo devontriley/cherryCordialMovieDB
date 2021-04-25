@@ -1,14 +1,14 @@
 import React from 'react';
 import MovieListEntry from './MovieListEntry';
 
-const MovieList = ({movies, removeMovieFromWatchlist}) =>
+const MovieList = ({currentUser, removeMovieFromWatchlist}) =>
 {
     return (
         <div className="mt-3">
-            {movies.length
+            {currentUser.watchlist.length
                 ?
                     <ul className="list-group">
-                        {movies.map(movie =>
+                        {currentUser.watchlist.map(movie =>
                             <MovieListEntry key={movie.id} movie={movie} removeMovieFromWatchlist={removeMovieFromWatchlist} />
                         )}
                     </ul>

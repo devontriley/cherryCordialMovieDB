@@ -10,7 +10,6 @@ const MovieModal = ({movie, setModalMovie}) =>
     {
         fetchCast(movie.id)
             .then(response =>{
-                console.log(response.data.cast);
                 setCast(response.data.cast);
             });
     }, []);
